@@ -114,11 +114,19 @@
 //   console.log(`started from ${start}, stopped at ${mid} and ended up on ${end}`)
 // })
 // eventEmitter.emit("start", 1, 50, 100)
-import { createServer } from "http"
-import { myDateTime } from "./myfirstmodule.js"
+console.clear()
+console.log("Hola a waaa")
 
-createServer(function (req, res) {
-  res.writeHead(200, { "Content-Type": "text/html" })
-  res.write("The date and time are currently: " + myDateTime())
-  res.end()
-}).listen(8080)
+import http from "http"
+
+const httpServer = http.createServer((req, res) => {
+  //Falta verbo/metodo
+  console.log(req.method)
+  //Falta path/ruta
+  console.log(req.url)
+  //Faltan headers
+  //Falta body
+  res.end("Recibido Zomso")
+})
+
+httpServer.listen(3000)
