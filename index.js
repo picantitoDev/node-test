@@ -120,13 +120,22 @@ console.log("Hola a waaa")
 import http from "http"
 
 const httpServer = http.createServer((req, res) => {
-  //Falta verbo/metodo
   console.log(req.method)
-  //Falta path/ruta
   console.log(req.url)
-  //Faltan headers
-  //Falta body
-  res.end("Recibido Zomso")
+  console.log(req.headers)
+
+  //Falta body (stream)
+  let data = ""
+  let chunkIndex = 0
+  req.on("data", (chunk) => {
+    data += chunk
+    chunkIndex++
+    console.log(chunkIndex)
+  })
+
+  req.on("end", () => {
+    res.end("Recibido Zomso")
+  })
 })
 
 httpServer.listen(3000)
