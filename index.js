@@ -8,7 +8,10 @@ app.get("/", (req, res) => {
 
 app.get("/productos/:id", (req, res) => {
   const id = Number(req.params.id)
-  const selectedProduct = productos.filter((producto) => producto.id === id)
+  const selectedProduct = productos.find((producto) => producto.id === id)
+  if (!selectedProduct) {
+    return res.status(404).send("<h1> Error 404: Producto no encontrado </h1>")
+  }
   res.send(selectedProduct)
 })
 
@@ -23,9 +26,11 @@ app.get("/productos", (req, res) => {
   }
 
   if (precioMin) {
-    newProds = newProds.filter((p) => p.precio >= precioMin)
+    newProds = newProds.filter((p) => p.precio >= Number(precioMin))
   }
   res.json(newProds)
 })
 
-app.listen(8080)
+app.listen(8080, () => {
+  console.log("Servidor corriendo en http://localhost:8080")
+})
