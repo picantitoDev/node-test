@@ -3,13 +3,13 @@ const app = express()
 const productRouter = require("./routes/productRoute.js")
 const fn = require("./routes/authorRouter.js")
 const userRoute = require("./routes/userRoute.js")
-const path = require("./path")
+const path = require("node:path")
 
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs")
 
 app.get("/", (req, res) => {
-  res.send("<h1> WTF </h1>")
+  res.render("index", { message: "EJS rocks!" })
 })
 
 app.use("/users", userRoute)
