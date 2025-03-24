@@ -1,23 +1,40 @@
 const express = require("express")
 const app = express()
-const productRouter = require("./routes/productRoute.js")
-const fn = require("./routes/authorRouter.js")
-const userRoute = require("./routes/userRoute.js")
-const path = require("node:path")
+const path = require("path")
 
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs")
 
 app.get("/", (req, res) => {
-  res.render("index", { message: "EJS rocks!" })
+  res.render(
+    "index",
+    (people = [
+      {
+        name: "Deigo",
+      },
+      {
+        name: "Mari",
+      },
+      {
+        name: "Pals",
+      },
+      {
+        name: "Gabriel",
+      },
+      {
+        name: "Lourdes",
+      },
+      {
+        name: "Valcra",
+      },
+      {
+        name: "Pedro",
+      },
+    ])
+  )
 })
 
-app.use("/users", userRoute)
-
-app.use("/productos", productRouter)
-
-app.use("/authors", fn)
-
+console.log(app)
 app.listen(8080, () => {
-  console.log("Servidor corriendo en http://localhost:8080")
+  console.log("Listening on port 8080...")
 })

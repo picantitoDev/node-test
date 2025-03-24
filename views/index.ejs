@@ -1,26 +1,7 @@
-<% const animals = ["Cat", "Dog", "Lemur", "Hawk"] %>
-
 <ul>
-  <% animals.map((animal) => { %>
-  <li><%= animal %>s are cute</li>
-  <% }) %>
-</ul>
-
-<!-- navbar.ejs -->
-<nav>
-  <ul>
-    <% for (let i = 0; i < links.length; i++) { %>
-    <li>
-      <a href="<%= links[i].href %>">
-        <span> <%= links[i].text %> </span>
-      </a>
-    </li>
-    <% } %>
-  </ul>
-</nav>
-
-<!-- index.ejs -->
-<ul>
-  <% users.forEach((user) => { %> <%- include('users/user', {user: user}); %> <%
-  }); %>
+  <% for(let person of people) { %> <% if (person.name === 'Deigo') { %>
+  <li><%= 'Este es el fucking ' + person.name %></li>
+  <% } else { %>
+  <li><%= 'Este es el maldito ' + person.name %></li>
+  <% } %> <%} %>
 </ul>
