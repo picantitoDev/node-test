@@ -18,3 +18,9 @@
     <% } %>
   </ul>
 </nav>
+
+<!-- index.ejs -->
+<ul>
+  <% users.forEach((user) => { %> <%- include('users/user', {user: user}); %> <%
+  }); %>
+</ul>
