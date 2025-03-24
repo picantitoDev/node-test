@@ -1,5 +1,7 @@
-<html>
-  <body>
-    <%= message %>
-  </body>
-</html>
+<% const animals = ["Cat", "Dog", "Lemur", "Hawk"] %>
+
+<ul>
+  <% animals.map((animal) => { %>
+  <li><%= animal %>s are cute</li>
+  <% }) %>
+</ul>
